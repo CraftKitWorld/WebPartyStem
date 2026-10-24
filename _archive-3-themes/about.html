@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="en-theme-craftkit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About CraftKit</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== TRACKING PLACEHOLDERS ===== -->
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<script>
+/* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
+   Set window.CK_DEBUG = true in the browser console to log every event.
+   Events: cta_click, select_world, begin_checkout, apply_promotion, generate_lead, sign_up, purchase, email_pick, select_waitlist_path */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utm() {
+    var o = {};
+    try {
+      var q = new URLSearchParams(location.search);
+      KEYS.forEach(function (k) {
+        var v = q.get(k);
+        try {
+          if (v) { sessionStorage.setItem('ck_' + k, v); o[k] = v; }
+          else { var sv = sessionStorage.getItem('ck_' + k); if (sv) o[k] = sv; }
+        } catch (e) { if (v) o[k] = v; }
+      });
+    } catch (e) {}
+    return o;
+  }
+  window.ckTrack = function (name, params) {
+    try {
+      var p = Object.assign({ page_title: document.title }, utm(), params || {});
+      if (window.gtag) window.gtag('event', name, p);                          // GA4
+      (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
+      if (window.CK_DEBUG) console.log('[track]', name, p);
+    } catch (e) {}
+  };
+  window.ckIdentify = function (props) {
+    try {
+      if (props && props.$email) (window._learnq = window._learnq || []).push(['identify', props]);   // Klaviyo profile
+      if (window.CK_DEBUG) console.log('[identify]', props);
+    } catch (e) {}
+  };
+  // Any element with data-track="some_id" reports a cta_click automatically.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!el) return;
+    window.ckTrack('cta_click', { cta_id: el.getAttribute('data-track'), cta_text: (el.textContent || '').trim().slice(0, 60) });
+  });
+  utm();
+})();
+</script>
+<!-- ===== END TRACKING ===== -->
+
+<!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
+<link rel="stylesheet" href="eds-theme/craftkit-theme.css">
+<link rel="stylesheet" href="craftkit.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<script src="craftkit-chrome.js" data-part="header" data-variant="solid" data-page="about" data-cta="index.html#book"></script>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section aria-labelledby="about-h" class="bg-ink text-white pb-[clamp(56px,8vw,104px)] pt-[clamp(48px,7vw,96px)] border-t border-white/20">
+    <div class="wrap flex flex-col gap-8">
+      <svg width="56" height="56" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M20 4v32M4 20h32M8.7 8.7l22.6 22.6M31.3 8.7L8.7 31.3"/></svg>
+      <h1 id="about-h" class="text-[clamp(52px,9vw,112px)] leading-[.9] max-w-[11em]">Real adventures, not screen time</h1>
+      <p class="text-[clamp(19px,2vw,24px)] font-medium max-w-[34em]">CraftKit creates a world your child can't get enough of: running, sneaking, creating and laughing with friends. The kind of adventures they talk about long after the adventure is over.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn btn-coral" href="index.html#book" data-track="about_book_party">Book a party <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="after-school.html" data-track="about_after_school">After-school Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section aria-labelledby="story-h" class="py-[clamp(64px,9vw,112px)]">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-10 items-start">
+      <div class="flex-[1_1_380px] grid gap-6 min-w-0">
+        <h2 id="story-h" class="text-[clamp(34px,4.4vw,56px)] leading-none">Why we started CraftKit</h2>
+        <p class="text-[19px] max-w-[34em]">Hi I'm Katie, the founder. I want to take us back to the fond memories of playing and being transported to another world—one where all your friends are in on it.<br><br>The childhood moments that stick are rarely the ones on a screen.</p>
+        <p class="text-[19px] max-w-[34em]">So we build that magic. Costumes, a story to step into, games and creative activities. Kids run, laugh, create and work as a team, coming away with long lasting memories, not just another party or program.</p>
+        <p class="text-[19px] max-w-[34em]">Today we run parties in Hood River, Oregon and Melbourne, Australia. We hope to, one day, be able to take this magic all over the world!</p>
+      </div>
+      <div class="ph flex-[1_1_380px] min-h-[420px] aspect-[4/5] max-w-[560px] w-full" role="img" aria-label="Photo placeholder: the founder with kids mid-game" style="--ph:var(--en-theme-photo-walnut)"><span>[PHOTO: you with the kids, mid-game]</span></div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BELIEVE -->
+  <section aria-labelledby="values-h" class="bg-tint py-[clamp(64px,9vw,112px)]">
+    <div class="wrap grid gap-12">
+      <h2 id="values-h" class="text-[clamp(34px,4.4vw,56px)] leading-none max-w-[12em]">What every CraftKit adventure is built on</h2>
+      <ul class="grid gap-6 list-none m-0 p-0 grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))]">
+        <li class="bg-white border-2 border-ink p-7 grid gap-3 content-start">
+          <h3 class="text-[26px] leading-[1.05]">Real, not virtual</h3>
+          <p>Real friends, real running around, real laughs. We keep the days magical, and not tied to a screen.</p>
+        </li>
+        <li class="bg-white border-2 border-ink p-7 grid gap-3 content-start">
+          <h3 class="text-[26px] leading-[1.05]">Easy for parents</h3>
+          <p>We bring the games, activities and a host who runs it all, so you can enjoy the moments too.</p>
+        </li>
+        <li class="bg-white border-2 border-ink p-7 grid gap-3 content-start">
+          <h3 class="text-[26px] leading-[1.05]">Made to be remembered</h3>
+          <p>A story to step into, four games and a big piñata finish. It feels like an adventure, so it sticks.</p>
+        </li>
+        <li class="bg-white border-2 border-ink p-7 grid gap-3 content-start">
+          <h3 class="text-[26px] leading-[1.05]">Safe and welcoming</h3>
+          <p>[SAFETY DETAILS: adult hosts, supervision, how many kids per host, first aid. Fill in only what is true for you.]</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section aria-labelledby="team-h" class="py-[clamp(64px,9vw,112px)]">
+    <div class="wrap grid gap-12">
+      <h2 id="team-h" class="text-[clamp(34px,4.4vw,56px)] leading-none">Meet the people behind it all</h2>
+      <ul class="grid gap-8 list-none m-0 p-0 grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))]">
+        <li class="grid gap-4 content-start">
+          <div class="ph aspect-[4/5] w-full" role="img" aria-label="Photo placeholder: team member" style="--ph:var(--en-theme-photo-violet)"><span>[PHOTO: Name]</span></div>
+          <h3 class="text-[24px] leading-[1.1]">Katie Potter</h3>
+          <p class="text-muted">Founder and head builder</p>
+          <p>I can't remember how many different types of crafts I got into as a kid. It was wonderful. And I am so grateful to have that magic back through CraftKit, as I raise my son Rowan to never stop having a sense of curiosity and wonder.</p>
+        </li>
+        <li class="grid gap-4 content-start">
+          <div class="ph aspect-[4/5] w-full" role="img" aria-label="Photo placeholder: team member" style="--ph:var(--en-theme-photo-ocean)"><span>[PHOTO: Name]</span></div>
+          <h3 class="text-[24px] leading-[1.1]">Clara Pfundt</h3>
+          <p class="text-muted">[Role, e.g. Party host, Hood River]</p>
+          <p>[One friendly sentence about them and what they love about hosting.]</p>
+        </li>
+        <li class="grid gap-4 content-start">
+          <div class="ph aspect-[4/5] w-full" role="img" aria-label="Photo placeholder: team member" style="--ph:var(--en-theme-photo-pine)"><span>[PHOTO: Name]</span></div>
+          <h3 class="text-[24px] leading-[1.1]">[Name]</h3>
+          <p class="text-muted">[Role, e.g. Party host, Melbourne]</p>
+          <p>[One friendly sentence about them and what they love about hosting.]</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHERE -->
+  <section aria-labelledby="where-h" class="bg-ink text-white py-[clamp(56px,8vw,96px)]">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-8 items-start">
+      <h2 id="where-h" class="flex-[1_1_240px] text-[clamp(34px,4vw,52px)] leading-none">Where we are</h2>
+      <div class="flex-[3_1_480px] grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))]">
+        <div class="grid gap-2 content-start">
+          <h3 class="text-[26px]">Hood River, Oregon</h3>
+          <p>Birthday parties across Hood River and the Gorge. [Confirm your service area.]</p>
+        </div>
+        <div class="grid gap-2 content-start">
+          <h3 class="text-[26px]">Melbourne, Australia</h3>
+          <p>[Describe what you offer in Melbourne and which suburbs you cover.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-labelledby="cta-h" class="py-[clamp(64px,9vw,112px)]">
+    <div class="wrap flex flex-wrap items-end justify-between gap-8">
+      <h2 id="cta-h" class="text-[clamp(44px,7vw,92px)] leading-[.9] max-w-[10em]">Ready for an adventure?</h2>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn btn-coral" href="index.html#book" data-track="about_cta_party">Book a party <span aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="index.html#worlds" data-track="about_cta_worlds">See the worlds</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="craftkit-chrome.js" data-part="footer"></script>
+
+<script>
+(function () {
+  var f = document.getElementById('news-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = f.elements.email ? String(f.elements.email.value || '').trim() : '';
+    if (window.ckIdentify) ckIdentify({ $email: em, ck_source: 'footer_newsletter' });
+    if (window.ckTrack) ckTrack('sign_up', { method: 'footer_newsletter' });
+    f.classList.add('hidden');
+    document.getElementById('news-done').classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

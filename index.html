@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="en-theme-craftkit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CraftKit Birthday Parties | Adventure parties in Hood River</title>
+<meta name="description" content="Hosted adventure birthday parties in Hood River and the Gorge: dinosaurs, construction and the deep sea. We bring the games, the props and the host.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== TRACKING PLACEHOLDERS ===== -->
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<script>
+/* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
+   Set window.CK_DEBUG = true in the browser console to log every event.
+   Events: cta_click, select_world, begin_checkout, apply_promotion, generate_lead, sign_up, purchase, email_pick, select_waitlist_path */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utm() {
+    var o = {};
+    try {
+      var q = new URLSearchParams(location.search);
+      KEYS.forEach(function (k) {
+        var v = q.get(k);
+        try {
+          if (v) { sessionStorage.setItem('ck_' + k, v); o[k] = v; }
+          else { var sv = sessionStorage.getItem('ck_' + k); if (sv) o[k] = sv; }
+        } catch (e) { if (v) o[k] = v; }
+      });
+    } catch (e) {}
+    return o;
+  }
+  window.ckTrack = function (name, params) {
+    try {
+      var p = Object.assign({ page_title: document.title }, utm(), params || {});
+      if (window.gtag) window.gtag('event', name, p);                          // GA4
+      (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
+      if (window.CK_DEBUG) console.log('[track]', name, p);
+    } catch (e) {}
+  };
+  window.ckIdentify = function (props) {
+    try {
+      if (props && props.$email) (window._learnq = window._learnq || []).push(['identify', props]);   // Klaviyo profile
+      if (window.CK_DEBUG) console.log('[identify]', props);
+    } catch (e) {}
+  };
+  // Any element with data-track="some_id" reports a cta_click automatically.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!el) return;
+    window.ckTrack('cta_click', { cta_id: el.getAttribute('data-track'), cta_text: (el.textContent || '').trim().slice(0, 60) });
+  });
+  utm();
+})();
+</script>
+<!-- ===== END TRACKING ===== -->
+
+<!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
+<link rel="stylesheet" href="eds-theme/craftkit-theme.css">
+<link rel="stylesheet" href="craftkit.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<script src="craftkit-chrome.js" data-part="header" data-variant="overlay" data-page="parties" data-cta="#book"></script>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section aria-labelledby="hero-h" class="relative isolate min-h-[760px] flex flex-col justify-end text-white bg-hero">
+    <div class="ph absolute inset-0 -z-20" role="img" aria-label="Photo placeholder: kids in cardboard badges mid-game in a backyard" style="--ph:var(--en-theme-photo-cocoa)"><span>[HERO PHOTO: kids in costume badges, mid-game, laughing]</span></div>
+    <div aria-hidden="true" class="absolute inset-0 -z-10 bg-overlay"></div>
+    <div class="wrap w-full pt-40 pb-14 flex flex-col gap-6">
+      <div class="flex flex-wrap items-end justify-between gap-8">
+        <h1 id="hero-h" class="text-[clamp(52px,9.5vw,120px)] leading-[.88] max-w-[9.5em]" data-copy="hero.headline">Turn your party into an adventure</h1>
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-white" href="#worlds" data-track="hero_pick_world">Pick a world <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#book" data-track="hero_check_dates">Check dates and book</a>
+        </div>
+      </div>
+      <div class="grid gap-[6px] max-w-[760px]">
+        <p class="text-[19px] font-medium" data-copy="hero.sub1">Dinosaur escapes, construction crews and deep-sea missions.<br>We bring the games, the props and the host—you get to enjoy the party.</p>
+        <p class="text-[17px]" data-copy="hero.meta">Ages 3-16 · Hood River &amp; the Gorge</p>
+        <p class="text-[17px]"><span aria-hidden="true">★★★★★</span> <span class="sr">Five stars.</span> “Seriously, out of this world!” <span class="opacity-85">· Jeff B</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="relative border-b-2 border-rule bg-white overflow-hidden">
+    <div class="marquee-track" id="marquee">
+      <ul class="mq" id="mq-source" data-ck="party-ticker"></ul>
+    </div>
+    <button type="button" id="marquee-toggle" aria-label="Pause scrolling banner" aria-pressed="false"
+      class="absolute right-[clamp(12px,2vw,28px)] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border-2 border-ink bg-white text-ink inline-flex items-center justify-center cursor-pointer p-0">
+      <svg class="icon-pause" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="4" height="14"/><rect x="11" y="2" width="4" height="14"/></svg>
+      <svg class="icon-play hidden" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="currentColor"><path d="M4 2l12 7-12 7z"/></svg>
+    </button>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section aria-labelledby="how-h" class="py-[clamp(64px,9vw,112px)]">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-12 items-start">
+      <div class="flex-[1_1_420px] grid gap-8 max-w-[640px]">
+        <h2 id="how-h" class="text-[clamp(34px,4.4vw,56px)] leading-none" data-copy="how.heading">The party, without the planning</h2>
+        <ol class="how" data-ck="how-steps"><li><span class="n" aria-hidden="true">1</span><span><strong>Pick your theme.</strong> Select your child's favorite world and reserve your event date. One simple payment of $280 holds it.</span></li><li><span class="n" aria-hidden="true">2</span><span><strong>We bring the world.</strong> Our Game Master arrives 30 minutes early to set up life-sized modular cardboard props and gear in your living room or yard.</span></li><li><span class="n" aria-hidden="true">3</span><span><strong>2 hours of hosted action.</strong> You sit back and take photos while our Game Master leads non-stop crafting, relays, and squad challenges.</span></li></ol>
+      </div>
+      <div class="flex-[1_1_320px] bg-tint border-2 border-ink p-[clamp(24px,3vw,36px)] grid gap-4 max-w-[520px]">
+        <h3 class="text-[26px] leading-[1.05]">Every party includes</h3>
+        <ul class="grid gap-3 list-none m-0 p-0" data-ck="party-includes"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORLDS -->
+  <section id="worlds" aria-labelledby="worlds-h" class="pb-[clamp(64px,9vw,112px)] scroll-mt-4">
+    <div class="wrap grid gap-10">
+      <div class="grid gap-3">
+        <h2 id="worlds-h" class="text-[clamp(34px,4.4vw,56px)] leading-none" data-copy="worlds.heading">Choose your child's world</h2>
+        <p class="max-w-[56ch]" data-copy="worlds.lead">We transform your home or backyard into an interactive, life-sized story world—fully hosted by our active Game Masters. Zero stress, zero planning, screen-free fun.</p>
+      </div>
+      <div class="grid gap-3"><p class="m-0 font-bold">How old is your birthday child?</p><div data-ck="tier-toggle"></div></div>
+      <div data-ck="tier-intro"></div>
+      <div role="tablist" aria-label="Party worlds" class="grid grid-cols-1 sm:grid-cols-3 gap-3" data-ck="world-tabs"></div>
+      <div id="world-panel" data-ck="world-panel" role="tabpanel" tabindex="0" data-gallery="grid" class="pt-4"></div>
+      <div data-ck="custom-callout"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section aria-label="What parents say" class="bg-tint pt-[clamp(48px,7vw,88px)] pb-[clamp(32px,4vw,48px)]">
+    <div class="wrap" data-ck="quotes"></div>
+  </section>
+
+  <!-- PHOTO WALL (carousel; change data-gallery to "grid" for a mosaic) -->
+  <section aria-labelledby="wall-h" class="py-[clamp(56px,8vw,96px)]">
+    <div class="wrap grid gap-8">
+      <h2 id="wall-h" class="text-[clamp(34px,4vw,52px)] leading-none" data-copy="wall.heading">See a CraftKit party in action</h2>
+      <div data-ck="photo-wall" data-gallery="carousel"></div>
+    </div>
+  </section>
+
+  <!-- PARTY FLOW -->
+  <section aria-labelledby="flow-h" class="bg-tint py-[clamp(56px,8vw,104px)]">
+    <div class="wrap grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-x-[clamp(32px,6vw,96px)] gap-y-12 items-start">
+      <div class="ph aspect-[4/5] max-h-[720px] w-full" role="img" aria-label="Photo placeholder: kids mid-game" style="--ph:var(--en-theme-photo-moss)"><span>[PHOTO: kids mid-game, host in the middle]</span></div>
+      <div>
+        <p class="text-base">Hours of fun</p>
+        <h2 id="flow-h" class="text-[clamp(34px,4vw,52px)] leading-none text-coral mt-2" data-copy="flow.heading">How the party runs</h2>
+        <p class="mt-8 mb-10 max-w-[52ch]" data-copy="flow.lead">Your host leads every minute, so you can relax, chat and take photos. A typical party goes like this:</p>
+        <ol class="sched m-0 p-0 list-none" data-ck="schedule"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book" aria-label="Book your party" class="bg-ink text-white py-[clamp(56px,8vw,104px)] scroll-mt-0">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-10 items-start">
+      <div class="flex-[1_1_300px] max-w-[440px] grid gap-6 lg:sticky lg:top-8">
+        <h2 class="text-[clamp(40px,5vw,68px)] leading-[.95]" data-copy="book.heading">Lock in your date</h2>
+        <p class="text-[19px]" data-copy="book.sub">Pick a world, pick a day and pay <strong>$280</strong>. That is all it takes to book.</p>
+        <ul class="grid gap-3 list-none m-0 p-0 text-[17px]" data-ck="party-includes"></ul>
+      </div>
+      <div class="flex-[1.5_1_460px] min-w-0" aria-live="polite">
+      <div data-ck="booking-card" data-title="Book your party"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section aria-labelledby="faq-h" class="py-[clamp(64px,9vw,112px)]">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-8 items-start">
+      <h2 id="faq-h" class="flex-[1_1_200px] text-[clamp(34px,4vw,52px)] leading-none" data-copy="faq.heading">Questions parents ask</h2>
+      <div class="faq flex-[3_1_480px] min-w-0" data-ck="faq" data-open-first="true"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (shared) -->
+  <section aria-label="Book now" class="pt-[clamp(24px,4vw,48px)] pb-[clamp(80px,10vw,136px)]">
+    <div data-ck="final-cta"></div>
+  </section>
+
+</main>
+
+<script src="craftkit-chrome.js" data-part="footer"></script>
+
+<div class="stickybar" id="stickybar"><a class="btn btn-coral" href="#book" data-track="sticky_book_party">Book a party · <span data-ck-price>$280</span></a></div>
+<script>
+(function () {
+  var s = document.getElementById("stickybar"), b = document.getElementById("book");
+  if (!s || !b || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function (e) { s.style.display = e[0].isIntersecting ? "none" : ""; }, { threshold: 0.05 }).observe(b);
+})();
+</script>
+
+<script src="craftkit-sections.js"></script>
+<script src="craftkit-products.js"></script>
+<script src="craftkit-memory.js"></script>
+<script src="craftkit-booking.js"></script>
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  /* ---- Ticker: duplicate list for a seamless loop, pause button ---- */
+  var track = $('#marquee'), src = $('#mq-source');
+  var copy = src.cloneNode(true); copy.removeAttribute('id'); copy.setAttribute('aria-hidden', 'true');
+  track.appendChild(copy);
+  var mqBtn = $('#marquee-toggle'), mqPaused = false;
+  mqBtn.addEventListener('click', function () {
+    mqPaused = !mqPaused;
+    track.style.animationPlayState = mqPaused ? 'paused' : 'running';
+    mqBtn.setAttribute('aria-pressed', String(mqPaused));
+    mqBtn.setAttribute('aria-label', mqPaused ? 'Play scrolling banner' : 'Pause scrolling banner');
+    mqBtn.querySelector('.icon-pause').classList.toggle('hidden', mqPaused);
+    mqBtn.querySelector('.icon-play').classList.toggle('hidden', !mqPaused);
+  });
+
+
+  /* ---- Footer newsletter (placeholder: connect to Klaviyo) ---- */
+  $('#news-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    ckIdentify({ $email: String(this.elements.email.value || '').trim(), ck_source: 'footer_newsletter' });
+    ckTrack('sign_up', { method: 'footer_newsletter' });
+    this.classList.add('hidden');
+    $('#news-done').classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

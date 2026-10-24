@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="en-theme-craftkit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CraftKit Privacy and Booking Terms</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== TRACKING PLACEHOLDERS ===== -->
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<script>
+/* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
+   Set window.CK_DEBUG = true in the browser console to log every event.
+   Events: cta_click, select_world, begin_checkout, apply_promotion, generate_lead, sign_up, purchase, email_pick, select_waitlist_path */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utm() {
+    var o = {};
+    try {
+      var q = new URLSearchParams(location.search);
+      KEYS.forEach(function (k) {
+        var v = q.get(k);
+        try {
+          if (v) { sessionStorage.setItem('ck_' + k, v); o[k] = v; }
+          else { var sv = sessionStorage.getItem('ck_' + k); if (sv) o[k] = sv; }
+        } catch (e) { if (v) o[k] = v; }
+      });
+    } catch (e) {}
+    return o;
+  }
+  window.ckTrack = function (name, params) {
+    try {
+      var p = Object.assign({ page_title: document.title }, utm(), params || {});
+      if (window.gtag) window.gtag('event', name, p);                          // GA4
+      (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
+      if (window.CK_DEBUG) console.log('[track]', name, p);
+    } catch (e) {}
+  };
+  window.ckIdentify = function (props) {
+    try {
+      if (props && props.$email) (window._learnq = window._learnq || []).push(['identify', props]);   // Klaviyo profile
+      if (window.CK_DEBUG) console.log('[identify]', props);
+    } catch (e) {}
+  };
+  // Any element with data-track="some_id" reports a cta_click automatically.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!el) return;
+    window.ckTrack('cta_click', { cta_id: el.getAttribute('data-track'), cta_text: (el.textContent || '').trim().slice(0, 60) });
+  });
+  utm();
+})();
+</script>
+<!-- ===== END TRACKING ===== -->
+
+<!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
+<link rel="stylesheet" href="eds-theme/craftkit-theme.css">
+<link rel="stylesheet" href="craftkit.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<script src="craftkit-chrome.js" data-part="header" data-variant="solid" data-page="none" data-cta="index.html#book"></script>
+
+<main id="main">
+  <section class="py-[clamp(48px,7vw,96px)]">
+    <div class="wrap">
+      <div class="max-w-[40em] grid gap-8 text-[18px] leading-[1.65]">
+        <div class="grid gap-3">
+          <h1 id="priv-h" class="text-[clamp(44px,7vw,80px)] leading-[.92]">Privacy and booking terms</h1>
+          <p class="text-base text-muted">Last updated: October 2026</p>
+        </div>
+        <p>CraftKit collects only what we need to run the event.<br>Payments are handled by Square, so we never see your full card number.</p>
+        <p>We use Square, Klaviyo and Google Analytics. We don't sell your information, and we only share it with those providers or when the law requires.</p>
+        <p>This site is for parents and guardians, not children under 13. To see, fix or delete your information, or to unsubscribe, email hello@craftkitworld.com.</p>
+        <div id="terms" class="grid gap-4 scroll-mt-6 pt-6 border-t-2 border-ink">
+          <h2 class="text-[clamp(30px,4vw,44px)] leading-none">Booking and cancellation terms</h2>
+          <p><strong>Payment.</strong> The party price shown when you book is paid in full online through Square to hold your date. [CONFIRM: no balance is due later.]</p>
+          <p><strong>Changing your date.</strong> You can move your party to another date for free if you ask more than 10 days before it, subject to availability.</p>
+          <p><strong>Cancelling.</strong> [Cancel up to 00 days before your party for a full refund. After that, [no refund / a partial refund].]</p>
+          <p><strong>Weather.</strong> [Describe your wet-weather plan: an indoor version, a covered area, or a free date change.]</p>
+          <p><strong>Guests and space.</strong> [Up to 00 children, on a flat area of about 00 x 00 feet.]</p>
+          <p><strong>If we need to cancel.</strong> [If illness, safety or severe weather means we can't run your party, we'll offer a new date or a full refund.]</p>
+          <p><strong>Supervision.</strong> [A parent or guardian stays on site and is responsible for their children during the party.]</p>
+        </div>
+        <p class="text-base text-muted">[DRAFT: have a lawyer check the privacy policy and the booking terms before publishing. Depending on where your visitors live (Oregon, Australia, EU/UK), you may be required to add more.]</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="craftkit-chrome.js" data-part="footer"></script>
+
+<script>
+(function () {
+  var f = document.getElementById('news-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = f.elements.email ? String(f.elements.email.value || '').trim() : '';
+    if (window.ckIdentify) ckIdentify({ $email: em, ck_source: 'footer_newsletter' });
+    if (window.ckTrack) ckTrack('sign_up', { method: 'footer_newsletter' });
+    f.classList.add('hidden');
+    document.getElementById('news-done').classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

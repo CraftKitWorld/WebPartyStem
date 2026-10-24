@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="en-theme-craftkit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book your CraftKit party</title>
+<meta name="description" content="Pick a world, pick a date and book your CraftKit adventure party from $280.">
+<meta name="robots" content="noindex">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== TRACKING PLACEHOLDERS ===== -->
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<script>
+/* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
+   Set window.CK_DEBUG = true in the browser console to log every event.
+   Events: cta_click, select_world, begin_checkout, apply_promotion, generate_lead, sign_up, purchase, email_pick, select_waitlist_path */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utm() {
+    var o = {};
+    try {
+      var q = new URLSearchParams(location.search);
+      KEYS.forEach(function (k) {
+        var v = q.get(k);
+        try {
+          if (v) { sessionStorage.setItem('ck_' + k, v); o[k] = v; }
+          else { var sv = sessionStorage.getItem('ck_' + k); if (sv) o[k] = sv; }
+        } catch (e) { if (v) o[k] = v; }
+      });
+    } catch (e) {}
+    return o;
+  }
+  window.ckTrack = function (name, params) {
+    try {
+      var p = Object.assign({ page_title: document.title }, utm(), params || {});
+      if (window.gtag) window.gtag('event', name, p);                          // GA4
+      (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
+      if (window.CK_DEBUG) console.log('[track]', name, p);
+    } catch (e) {}
+  };
+  window.ckIdentify = function (props) {
+    try {
+      if (props && props.$email) (window._learnq = window._learnq || []).push(['identify', props]);   // Klaviyo profile
+      if (window.CK_DEBUG) console.log('[identify]', props);
+    } catch (e) {}
+  };
+  // Any element with data-track="some_id" reports a cta_click automatically.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!el) return;
+    window.ckTrack('cta_click', { cta_id: el.getAttribute('data-track'), cta_text: (el.textContent || '').trim().slice(0, 60) });
+  });
+  utm();
+})();
+</script>
+<!-- ===== END TRACKING ===== -->
+
+<!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
+<link rel="stylesheet" href="eds-theme/craftkit-theme.css">
+<link rel="stylesheet" href="craftkit.css">
+</head>
+<body>
+<a class="skip" href="#book">Skip to booking</a>
+
+<script src="craftkit-chrome.js" data-part="header" data-variant="sms"></script>
+
+<main id="main">
+
+  <!-- BOOKING FIRST -->
+  <section id="book" aria-label="Book your party" class="bg-ink text-white pt-2 pb-8 scroll-mt-0">
+    <div class="wrap grid gap-4 max-w-[860px]">
+      <h1 class="text-[clamp(32px,6vw,52px)] leading-[.95]">Book your party</h1>
+      <div aria-live="polite">
+      <div data-ck="booking-card" data-title="Book your party" data-compact="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section aria-labelledby="inc-h" class="py-8">
+    <div class="wrap grid gap-4 max-w-[860px]">
+      <h2 id="inc-h" class="text-[clamp(26px,3.4vw,36px)] leading-none">What you get</h2>
+      <ul class="grid gap-2 list-none m-0 p-0 text-[17px]" data-ck="party-includes"></ul>
+    </div>
+  </section>
+
+  <!-- WORLDS (compact) -->
+  <section aria-labelledby="w-h" class="bg-tint py-8">
+    <div class="wrap grid gap-5 max-w-[860px]">
+      <h2 id="w-h" class="text-[clamp(26px,3.4vw,36px)] leading-none">Not sure which world?<br>Take a look</h2>
+      <div data-ck="world-accordion" data-gallery="carousel" class="bg-tint"></div>
+      <div data-ck="custom-callout" data-compact="true"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (shared with the Meta page) -->
+  <section aria-label="What parents say" class="py-8">
+    <div class="wrap max-w-[860px]" data-ck="quotes" data-compact="true"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section aria-labelledby="faq-h" class="pb-8">
+    <div class="wrap max-w-[860px] grid gap-4">
+      <h2 id="faq-h" class="text-[clamp(26px,3.4vw,36px)] leading-none">Quick questions</h2>
+      <div class="faq" data-ck="faq" data-compact="true"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (shared) -->
+  <section aria-label="Book now" class="pt-2 pb-10">
+    <div data-ck="final-cta" data-compact="true"></div>
+  </section>
+
+</main>
+
+<script src="craftkit-chrome.js" data-part="footer"></script>
+
+<div class="stickybar" id="stickybar"><a class="btn btn-coral" href="#book" data-track="sms_back_to_booking">Back to booking <span aria-hidden="true">↑</span></a></div>
+<script>
+(function () {
+  var s = document.getElementById("stickybar"), b = document.getElementById("book");
+  if (!s || !b || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function (e) { s.style.display = e[0].isIntersecting ? "none" : ""; }, { threshold: 0.05 }).observe(b);
+})();
+</script>
+
+<script src="craftkit-sections.js"></script>
+<script src="craftkit-products.js"></script>
+<script src="craftkit-memory.js"></script>
+<script src="craftkit-booking.js"></script>
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  /* ---- Footer newsletter (placeholder: connect to Klaviyo) ---- */
+  $('#news-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    ckIdentify({ $email: String(this.elements.email.value || '').trim(), ck_source: 'footer_newsletter' });
+    ckTrack('sign_up', { method: 'footer_newsletter' });
+    this.classList.add('hidden');
+    $('#news-done').classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

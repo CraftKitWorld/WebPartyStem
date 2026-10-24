@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="en-theme-craftkit">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- DRAFT: paused. Not linked from the main site. Reworded copy lives in after-school.html. -->
+<title>CraftKit STEM Camps Waitlist</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== TRACKING PLACEHOLDERS ===== -->
+<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<script>
+/* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
+   Set window.CK_DEBUG = true in the browser console to log every event.
+   Events: cta_click, select_world, begin_checkout, apply_promotion, generate_lead, sign_up, purchase, email_pick, select_waitlist_path */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function utm() {
+    var o = {};
+    try {
+      var q = new URLSearchParams(location.search);
+      KEYS.forEach(function (k) {
+        var v = q.get(k);
+        try {
+          if (v) { sessionStorage.setItem('ck_' + k, v); o[k] = v; }
+          else { var sv = sessionStorage.getItem('ck_' + k); if (sv) o[k] = sv; }
+        } catch (e) { if (v) o[k] = v; }
+      });
+    } catch (e) {}
+    return o;
+  }
+  window.ckTrack = function (name, params) {
+    try {
+      var p = Object.assign({ page_title: document.title }, utm(), params || {});
+      if (window.gtag) window.gtag('event', name, p);                          // GA4
+      (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
+      if (window.CK_DEBUG) console.log('[track]', name, p);
+    } catch (e) {}
+  };
+  window.ckIdentify = function (props) {
+    try {
+      if (props && props.$email) (window._learnq = window._learnq || []).push(['identify', props]);   // Klaviyo profile
+      if (window.CK_DEBUG) console.log('[identify]', props);
+    } catch (e) {}
+  };
+  // Any element with data-track="some_id" reports a cta_click automatically.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!el) return;
+    window.ckTrack('cta_click', { cta_id: el.getAttribute('data-track'), cta_text: (el.textContent || '').trim().slice(0, 60) });
+  });
+  utm();
+})();
+</script>
+<!-- ===== END TRACKING ===== -->
+
+<!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
+<link rel="stylesheet" href="eds-theme/craftkit-theme.css">
+<link rel="stylesheet" href="craftkit.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="absolute top-0 inset-x-0 z-10 text-white">
+  <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-7">
+    <a href="index.html" aria-label="CraftKit, build your dreams. Home" class="flex items-center gap-[14px] no-underline text-white">
+      <svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-linejoin="round"><path d="M32 5 59 17 32 29 5 17Z" stroke-width="2"/><path d="M5 27l27 12 27-12" fill="none" stroke-width="5"/><path d="M5 40l27 12 27-12" fill="none" stroke-width="5"/><path d="M5 53l27 8 27-8" fill="none" stroke-width="5"/></svg>
+      <span class="flex flex-col gap-1"><span class="display text-[40px] font-extrabold leading-[.9]">CraftKit</span><span class="text-[13px] font-bold tracking-[.14em] leading-none">BUILD YOUR DREAMS</span></span>
+    </a>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+      <nav class="nav flex flex-wrap gap-x-5" aria-label="Main">
+        <a href="index.html" data-track="nav_parties">Parties</a>
+        <a href="stem-camps.html" aria-current="page">STEM Camps</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section aria-labelledby="hero-h" class="relative isolate min-h-[760px] flex flex-col justify-end text-white bg-hero">
+    <div class="ph absolute inset-0 -z-20" role="img" aria-label="Photo placeholder: kids building with cardboard at a camp" style="--ph:var(--en-theme-photo-slate)"><span>[HERO PHOTO — kids building at camp]</span></div>
+    <div aria-hidden="true" class="absolute inset-0 -z-10 bg-overlay"></div>
+    <div class="wrap w-full pt-40 pb-14 flex flex-col gap-5">
+      <div class="flex items-center gap-5 flex-wrap">
+        <svg width="56" height="56" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M20 4v32M4 20h32M8.7 8.7l22.6 22.6M31.3 8.7L8.7 31.3"/></svg>
+        <p class="text-base">Hood River, OR · Portland Metro · Summer &amp; After-School 2027</p>
+      </div>
+      <div class="flex flex-wrap items-end justify-between gap-8">
+        <h1 id="hero-h" class="basis-full max-w-none"><span class="block text-[clamp(34px,5vw,60px)] leading-none">Hands-On Building Camps</span><span class="block text-[clamp(52px,9.5vw,120px)] leading-[.88] mt-[14px]">for kids who love making things</span></h1>
+        <a class="btn btn-white" href="#waitlist" data-track="hero_join_waitlist">Join the 2027 Priority Waitlist <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="text-[19px] font-medium max-w-[760px]">Small groups of 12 · Ages 7+ · Hold your priority spot with a [DEPOSIT] deposit, or join free with our newsletter.</p>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="relative border-b-2 border-rule bg-white overflow-hidden">
+    <div class="marquee-track" id="marquee">
+      <ul class="mq" id="mq-source" data-ck="camp-ticker"></ul>
+      <!-- an aria-hidden copy of the list is added here by the script so the loop is seamless -->
+    </div>
+    <button type="button" id="marquee-toggle" aria-label="Pause scrolling banner" aria-pressed="false"
+      class="absolute right-[clamp(12px,2vw,28px)] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border-2 border-ink bg-white text-ink inline-flex items-center justify-center cursor-pointer p-0">
+      <svg class="icon-pause" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="4" height="14"/><rect x="11" y="2" width="4" height="14"/></svg>
+      <svg class="icon-play hidden" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="currentColor"><path d="M4 2l12 7-12 7z"/></svg>
+    </button>
+  </div>
+
+  <!-- WORLDS -->
+  <section aria-labelledby="worlds-h" class="pt-[clamp(56px,8vw,104px)]">
+    <div class="wrap">
+      <h2 id="worlds-h" class="text-[clamp(34px,4vw,52px)] leading-none mb-3">The worlds we're building</h2>
+      <p class="max-w-[56ch] mb-10">[COPY: one or two lines on how camp worlds work. Real copy coming.]</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8" data-ck="camp-cards"></div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section id="waitlist" aria-labelledby="wait-h" class="pt-[clamp(56px,8vw,104px)] pb-[clamp(72px,10vw,128px)]">
+    <div class="wrap flex flex-wrap gap-x-[clamp(32px,6vw,96px)] gap-y-12 items-start">
+
+      <div class="flex-[1_1_300px] grid gap-6 max-w-[460px]">
+        <h2 id="wait-h" class="text-[clamp(34px,4vw,52px)] leading-none">Join the 2027 Priority Waitlist</h2>
+        <div class="bg-tint px-[26px] py-6">
+          <p class="display text-[22px] leading-[1.2] font-bold tracking-[-0.02em]">Limited to 12 kids per cohort. Waitlist families get first pick of dates + early-bird pricing</p>
+        </div>
+        <p class="text-[19px] leading-normal">Transported to another world of creativity and curiosity, using cardboard, real mechanisms, and the satisfaction and wonder that happens when a kid is genuinely absorbed in something.</p>
+        <p class="text-[19px]">Small groups. No screens. Ages 7+. Launching Summer 2027.</p>
+        <p class="text-[17px] text-muted">[COPY: what a camp day looks like, dates and early-bird price. Real copy coming.]</p>
+        <div>
+          <h3 class="text-2xl leading-[1.1] mb-4">What happens next</h3>
+          <ol class="how">
+            <li><span class="n" aria-hidden="true">1</span><span>Tell us which worlds your child would love. This is how we decide which camps to build first.</span></li>
+            <li><span class="n" aria-hidden="true">2</span><span>Hold your priority spot with a [DEPOSIT] deposit, or join our newsletter instead. No deposit needed.</span></li>
+            <li><span class="n" aria-hidden="true">3</span><span>We email you first pick of dates and early-bird pricing within [00] days. [Confirm timing]</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="flex-[1.5_1_420px] min-w-0" aria-live="polite">
+        <form id="wait-form" data-square-checkout="[SQUARE LOCATION ID]" class="grid gap-8">
+
+          <fieldset class="field !gap-[18px]">
+            <legend class="step-title">1. Tell us about your child</legend>
+            <div class="f-row">
+              <div class="field"><label for="w-first">First name <span class="req">(required)</span></label><input class="input" id="w-first" name="first" type="text" autocomplete="given-name" required></div>
+              <div class="field"><label for="w-last">Last name <span class="req">(required)</span></label><input class="input" id="w-last" name="last" type="text" autocomplete="family-name" required></div>
+            </div>
+            <div class="f-row">
+              <div class="field"><label for="w-email">Email <span class="req">(required)</span></label><input class="input" id="w-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="w-phone">Phone <span class="req">(optional)</span></label><input class="input" id="w-phone" name="phone" type="tel" autocomplete="tel"></div>
+            </div>
+            <div class="field max-w-[360px]"><label for="w-ages">Your child's age(s) <span class="req">(required)</span></label><input class="input" id="w-ages" name="ages" type="text" required></div>
+            <fieldset class="field">
+              <legend>Where would you like to join? <span class="req">(required)</span></legend>
+              <div class="flex flex-wrap gap-x-7">
+                <label class="choice"><input type="radio" name="location" value="Hood River" required> Hood River, OR</label>
+                <label class="choice"><input type="radio" name="location" value="Portland Metro"> Portland Metro</label>
+                <label class="choice"><input type="radio" name="location" value="Either"> Either</label>
+              </div>
+            </fieldset>
+          </fieldset>
+
+          <fieldset class="field themebox">
+            <legend>Which worlds would your child love?</legend>
+            <p class="text-[17px]">This tells us which camps to build first. Pick as many as you like.</p>
+            <div class="flex flex-wrap gap-x-7" data-ck="camp-checkboxes"></div>
+            <div class="field"><label for="w-other">Something else they're obsessed with? <span class="req">(optional)</span></label><input class="input" id="w-other" name="world_other" type="text" placeholder="e.g. robots, dragons, space stations"></div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>When could they come? <span class="req">(tick any)</span></legend>
+            <div class="flex flex-col">
+              <label class="choice"><input type="checkbox" name="dates" value="Thanksgiving week 2026"> Thanksgiving week (Nov 23–27, 2026)</label>
+              <label class="choice"><input type="checkbox" name="dates" value="Winter break 2026-27"> Winter break (Dec 21, 2026 – Jan 1, 2027)</label>
+              <label class="choice"><input type="checkbox" name="dates" value="Spring break 2027"> Spring break (Mar 22–26, 2027)</label>
+              <label class="choice"><input type="checkbox" name="dates" value="Summer 2027"> Summer 2027 (mid-June to late August)</label>
+            </div>
+            <!-- Dates from the 2026-27 Hood River County and Portland Public Schools calendars (third-party summaries). Confirm with each district and update which breaks you will run. -->
+            <label class="choice mt-2"><input type="checkbox" name="afterschool" value="yes"> I'm also interested in after-school programs</label>
+          </fieldset>
+
+          <fieldset class="field !gap-[14px]">
+            <legend class="step-title">2. Hold your priority spot</legend>
+            <label class="worldopt worldopt-top"><input type="radio" name="path" value="deposit" checked><span>Pay a [DEPOSIT] deposit<small>Secures your priority choice of dates and worlds. [Add how the deposit is applied to the first camp booking.]</small></span></label>
+            <label class="worldopt worldopt-top"><input type="radio" name="path" value="free"><span>No deposit: join our newsletter<small>You still get priority waitlist access. We'll email camp news and you can unsubscribe any time.</small></span></label>
+
+            <div id="panel-deposit" class="grid gap-[14px]">
+              <div class="pay-box" role="group" aria-label="Square card payment form placeholder">
+                <strong>[SQUARE CARD FIELD]</strong>
+                <span>Square Web Payments SDK mounts here: card number, expiry, CVV and postcode.</span>
+              </div>
+              <label class="choice items-start pt-[6px]"><input type="checkbox" id="terms" name="terms" required class="mt-[11px]"> <span>I agree to the deposit and refund terms. [LINK TO POLICY]</span></label>
+            </div>
+            <div id="panel-free" class="hidden">
+              <label class="choice items-start pt-[6px]" data-klaviyo-list="[KLAVIYO LIST ID]"><input type="checkbox" id="newsletter" name="newsletter" class="mt-[11px]"> <span>Yes, add me to the CraftKit newsletter. This is how we keep your priority spot without a deposit.</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field"><label for="w-notes">Anything else we should know? <span class="req">(optional)</span></label><textarea class="input" id="w-notes" name="notes"></textarea></div>
+
+          <div class="grid gap-[10px] justify-items-start">
+            <button id="btn-deposit" class="btn btn-coral min-h-[60px] px-9 py-4 text-lg" type="submit">Pay [DEPOSIT] &amp; join the priority waitlist <span aria-hidden="true">→</span></button>
+            <button id="btn-free" class="btn btn-coral min-h-[60px] px-9 py-4 text-lg hidden" type="submit">Join the priority waitlist, no deposit <span aria-hidden="true">→</span></button>
+            <p id="note-deposit" class="text-[15px] text-muted">Secure payment processed by Square. [Add refund policy summary]</p>
+            <p id="note-free" class="text-[15px] text-muted hidden">No payment needed. You can unsubscribe any time.</p>
+          </div>
+        </form>
+
+        <div id="done-deposit" role="status" class="hidden bg-tint p-8 gap-3">
+          <h3 class="text-[32px] leading-none">Deposit received. You're on the priority list.</h3>
+          <p class="mt-3">A Square receipt will arrive by email, and we'll be in touch with early-bird pricing and first pick of dates for 2027. [Confirm copy]</p>
+        </div>
+        <div id="done-free" role="status" class="hidden bg-tint p-8 gap-3">
+          <h3 class="text-[32px] leading-none">You're on the priority list.</h3>
+          <p class="mt-3">No deposit needed. Watch your inbox: we'll send first pick of dates and early-bird pricing for 2027. [Confirm copy]</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST (placeholders) -->
+  <section aria-labelledby="trust-h" class="bg-tint py-[clamp(56px,8vw,96px)]">
+    <div class="wrap">
+      <h2 id="trust-h" class="text-[clamp(34px,4vw,52px)] leading-none mb-10">Why families trust CraftKit</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-8">
+        <figure class="m-0 grid gap-[14px] content-start"><div class="ph aspect-[4/3]" role="img" aria-label="Photo placeholder: kids at camp" style="--ph:var(--en-theme-photo-moss)"><span>[PHOTO — kids at camp]</span></div><blockquote class="display m-0 text-2xl leading-[1.15]">“[PARENT QUOTE]”</blockquote><figcaption>[Parent name · Camp]</figcaption></figure>
+        <div class="grid gap-[14px] content-start"><div class="ph aspect-[4/3]" role="img" aria-label="Photo placeholder: instructor" style="--ph:var(--en-theme-photo-slate)"><span>[PHOTO — your instructors]</span></div><h3 class="text-2xl leading-[1.1]">Meet your instructors</h3><p>[COPY: who runs camp, background, ratio of adults to kids.]</p></div>
+        <div class="grid gap-[14px] content-start"><div class="ph aspect-[4/3]" role="img" aria-label="Photo placeholder: safety" style="--ph:var(--en-theme-surface-hero)"><span>[PHOTO — safe tools in use]</span></div><h3 class="text-2xl leading-[1.1]">Safe, small and hands-on</h3><p>[COPY: kid-safe tools, groups of 12, supervision, first aid, allergy information.]</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot bg-black text-white pt-[72px] pb-14">
+  <div class="wrap flex flex-wrap gap-x-10 gap-y-12 justify-between items-start">
+    <div class="flex-[1_1_220px] grid gap-4 text-base">
+      <p class="display text-[22px] font-semibold">CraftKit World</p>
+      <address class="not-italic leading-[1.6]">Hood River, OR, USA<br>Melbourne, Australia</address>
+      <a href="tel:+15412884132" class="no-underline">+1 (541) 288-4132</a>
+    </div>
+    <div class="flex-[2_1_380px] max-w-[600px] grid gap-5" aria-live="polite">
+      <h2 class="text-[32px] leading-none">Newsletter Sign Up</h2>
+      <form id="news-form" data-klaviyo-list="[KLAVIYO LIST ID]" class="flex flex-wrap gap-3">
+        <label class="sr" for="nl-email">Email address</label>
+        <input class="input !w-auto flex-[1_1_240px] !border-white" id="nl-email" name="email" type="email" autocomplete="email" placeholder="Email Address" required>
+        <button class="btn btn-white" type="submit">Sign Up</button>
+        <p class="basis-full text-sm text-inverse-muted">[Klaviyo: connect this form to your newsletter list]</p>
+      </form>
+      <p id="news-done" role="status" class="hidden text-lg">Thanks for signing up!</p>
+    </div>
+    <div class="flex-[1_1_200px] flex flex-col items-start gap-5">
+      <nav aria-label="Footer" class="flex flex-col">
+        <a href="about.html" class="inline-flex items-center min-h-[44px]">About</a>
+        <a href="privacy.html" class="inline-flex items-center min-h-[44px]">Privacy policy</a>
+      </nav>
+      <div class="social flex gap-1">
+        <a href="#" aria-label="CraftKit on Instagram"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="CraftKit on Facebook"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8z"/></svg></a>
+        <a href="#" aria-label="CraftKit on Pinterest"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M10.6 17.5l1.6-7M10 12.6c-.8-2.4.6-4.2 2.5-4.2 1.7 0 2.5 1.2 2.5 2.4 0 1.7-1 3.1-2.4 3.1-.8 0-1.4-.6-1.2-1.4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="craftkit-products.js"></script>
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+
+  /* ---- Ticker: duplicate list for a seamless loop, pause button ---- */
+  var track = $('#marquee'), src = $('#mq-source');
+  var copy = src.cloneNode(true); copy.removeAttribute('id'); copy.setAttribute('aria-hidden', 'true');
+  track.appendChild(copy);
+  var mqBtn = $('#marquee-toggle'), mqPaused = false;
+  mqBtn.addEventListener('click', function () {
+    mqPaused = !mqPaused;
+    track.style.animationPlayState = mqPaused ? 'paused' : 'running';
+    mqBtn.setAttribute('aria-pressed', String(mqPaused));
+    mqBtn.setAttribute('aria-label', mqPaused ? 'Play scrolling banner' : 'Pause scrolling banner');
+    mqBtn.querySelector('.icon-pause').classList.toggle('hidden', mqPaused);
+    mqBtn.querySelector('.icon-play').classList.toggle('hidden', !mqPaused);
+  });
+
+  /* ---- Waitlist: deposit OR newsletter (no deposit) ---- */
+  var path = 'deposit', form = $('#wait-form');
+  function setPath(p) {
+    path = p;
+    var dep = p === 'deposit';
+    $('#panel-deposit').classList.toggle('hidden', !dep);
+    $('#panel-free').classList.toggle('hidden', dep);
+    $('#btn-deposit').classList.toggle('hidden', !dep);
+    $('#btn-free').classList.toggle('hidden', dep);
+    $('#note-deposit').classList.toggle('hidden', !dep);
+    $('#note-free').classList.toggle('hidden', dep);
+    $('#terms').required = dep;          // only required on the deposit path
+    $('#newsletter').required = !dep;    // only required on the no-deposit path
+    ckTrack('select_waitlist_path', { path: p });
+  }
+  form.querySelectorAll('input[name="path"]').forEach(function (r) {
+    r.addEventListener('change', function () { if (r.checked) setPath(r.value); });
+  });
+  $('#terms').required = true;
+
+  function vals(name) { return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return i.value; }); }
+  function val(name) { return form.elements[name] ? String(form.elements[name].value || '').trim() : ''; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var themes = vals('world').join(', ');
+    ckIdentify({
+      $email: val('email'), $first_name: val('first'), $last_name: val('last'), $phone_number: val('phone') || undefined,
+      ck_child_ages: val('ages'), ck_location: val('location'),
+      ck_theme_interest: themes, ck_theme_other: val('world_other'),
+      ck_break_interest: vals('dates').join(', '),
+      ck_afterschool_interest: vals('afterschool').length > 0,
+      ck_waitlist_path: path
+    });
+    ckTrack('generate_lead', {
+      lead_type: 'stem_waitlist', waitlist_path: path, themes: themes, theme_other: val('world_other'),
+      location: val('location'), breaks: vals('dates').join(', '), afterschool: vals('afterschool').length > 0
+    });
+    if (path === 'deposit') {
+      // TODO: tokenize the card with Square Web Payments SDK, then POST to your server.
+      ckTrack('purchase', { currency: 'USD', value: 0 /* TODO: deposit amount */, transaction_id: '[SQUARE PAYMENT ID]', item_name: 'STEM waitlist deposit' });
+    } else {
+      // TODO: subscribe the email to your Klaviyo list ([KLAVIYO LIST ID]).
+      ckTrack('sign_up', { method: 'waitlist_no_deposit' });
+    }
+    form.classList.add('hidden');
+    var d = $(path === 'deposit' ? '#done-deposit' : '#done-free'); d.classList.remove('hidden'); d.classList.add('grid');
+  });
+
+  /* ---- Footer newsletter (placeholder: connect to Klaviyo) ---- */
+  $('#news-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    ckIdentify({ $email: String(this.elements.email.value || '').trim(), ck_source: 'footer_newsletter' });
+    ckTrack('sign_up', { method: 'footer_newsletter' });
+    this.classList.add('hidden');
+    $('#news-done').classList.remove('hidden');
+  });
+})();
+</script>
+</body>
+</html>

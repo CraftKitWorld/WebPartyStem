@@ -1,0 +1,131 @@
+/* ==========================================================================
+   CraftKit theme for an EDS-style design system (standalone, third theme)
+   Sits beside the light and dark themes: add class "en-theme-craftkit" to
+   <html> or <body>. Everything here is plain CSS variables, so it can be
+   swapped, renamed or deleted without touching the page markup.
+
+   IMPORTANT: written from the notes on EDS, NOT from the repo.
+   The --en-theme-* names below are best guesses at the pattern. Tomorrow,
+   open the repo's light theme file and rename each variable here to match
+   (the table in README.md lists what each one does).
+   ========================================================================== */
+
+:root,
+.en-theme-craftkit {
+  /* ---- 1. Palette (raw values; the only place hex codes live) ---------- */
+  --en-palette-ink:        #141212;
+  --en-palette-paper:      #FAFAFA;
+  --en-palette-white:      #FFFFFF;
+  --en-palette-white-rgb:  255 255 255;   /* channel form so Tailwind opacity (text-white/90) works */
+  --en-palette-black:      #000000;
+  --en-palette-black-rgb:  0 0 0;
+  --en-palette-coral:      #D63A28;   /* accent; alternates #1F5FBF, #2E7D4F */
+  --en-palette-tint:       #FFF0C9;   /* soft butter surface (replaces the old pink blush) */
+  --en-palette-line:       #E0CD9A;   /* dividers on tint and white */
+  --en-palette-muted:      #4A4442;
+  --en-palette-green:      #1D6B3A;
+  --en-palette-red:        #A32016;
+  --en-palette-cream:      #FFF6E5;   /* poster only */
+  --en-palette-indigo:     #2E2A6B;   /* poster only */
+  --en-palette-yellow:     #FFD23F;   /* poster only */
+  --en-palette-mint:       #8FD9CB;   /* poster only */
+  --en-palette-night:      #2B2321;   /* hero base behind photos */
+  --en-palette-silver:     #C4C4C4;   /* secondary text on dark */
+  --en-palette-charcoal:   #2A2A2A;   /* hover on black */
+  --en-palette-ink-hover:  #3A3433;   /* hover on ink buttons */
+  --en-palette-grey:       #5A5A5A;   /* input placeholder text */
+  --en-palette-overlay:    rgba(12, 9, 8, .45);  /* dark wash over hero photos */
+  /* Placeholder photo tones (swap for real photos; keep names for product data) */
+  --en-palette-photo-default: #444444;
+  --en-palette-photo-ocean:   #1F4068;
+  --en-palette-photo-forest:  #2F5D3A;
+  --en-palette-photo-desert:  #7A5226;
+  --en-palette-photo-violet:  #4B2E6B;
+  --en-palette-photo-mars:    #7A3B26;
+  --en-palette-photo-sakura:  #6B2E3E;
+  --en-palette-photo-moss:    #6B7A63;
+  --en-palette-photo-slate:   #4A5045;
+  --en-palette-photo-cocoa:   #3A2E2A;
+  --en-palette-photo-pine:    #2E5A3F;
+  --en-palette-photo-walnut:  #5A3A2E;
+
+  /* ---- 2. Semantic theme tokens (what components and Tailwind read) ---- */
+  --en-theme-surface-page:           var(--en-palette-white);
+  --en-theme-surface-subtle:         var(--en-palette-paper);
+  --en-theme-surface-tint:           var(--en-palette-tint);
+  --en-theme-surface-inverse:        var(--en-palette-ink);
+  --en-theme-surface-hero:           var(--en-palette-night);
+  --en-theme-overlay-hero:           var(--en-palette-overlay);
+
+  --en-theme-text-primary:           var(--en-palette-ink);
+  --en-theme-text-secondary:         var(--en-palette-muted);
+  --en-theme-text-inverse:           var(--en-palette-white);
+  --en-theme-text-inverse-muted:     var(--en-palette-silver);
+  --en-theme-text-placeholder:       var(--en-palette-grey);
+  --en-theme-text-success:           var(--en-palette-green);
+  --en-theme-text-danger:            var(--en-palette-red);
+
+  --en-theme-border-default:         var(--en-palette-ink);
+  --en-theme-border-accent:          var(--en-palette-line);
+  --en-theme-border-inverse:         var(--en-palette-white);
+
+  --en-theme-action-primary-bg:      var(--en-palette-coral);
+  --en-theme-action-primary-text:    var(--en-palette-white);
+  --en-theme-action-primary-hover:   color-mix(in srgb, var(--en-palette-coral) 88%, black);
+  --en-theme-action-secondary-bg:    var(--en-palette-white);
+  --en-theme-action-secondary-text:  var(--en-palette-ink);
+  --en-theme-action-secondary-hover: var(--en-palette-tint);
+  --en-theme-action-inverse-bg:      var(--en-palette-ink);
+  --en-theme-action-inverse-hover:   var(--en-palette-ink-hover);
+  --en-theme-hover-on-inverse:       var(--en-palette-charcoal);
+  --en-theme-action-inverse-text:    var(--en-palette-white);
+
+  --en-theme-focus-ring:             var(--en-palette-ink);
+  --en-theme-focus-ring-gap:         var(--en-palette-white);
+  --en-theme-photo-stripe:           rgba(255, 255, 255, .07);
+  --en-theme-photo-default:          var(--en-palette-photo-default);
+  --en-theme-photo-ocean:            var(--en-palette-photo-ocean);
+  --en-theme-photo-forest:           var(--en-palette-photo-forest);
+  --en-theme-photo-desert:           var(--en-palette-photo-desert);
+  --en-theme-photo-violet:           var(--en-palette-photo-violet);
+  --en-theme-photo-mars:             var(--en-palette-photo-mars);
+  --en-theme-photo-sakura:           var(--en-palette-photo-sakura);
+  --en-theme-photo-moss:             var(--en-palette-photo-moss);
+  --en-theme-photo-slate:            var(--en-palette-photo-slate);
+  --en-theme-photo-cocoa:            var(--en-palette-photo-cocoa);
+  --en-theme-photo-pine:             var(--en-palette-photo-pine);
+  --en-theme-photo-walnut:           var(--en-palette-photo-walnut);
+
+  /* ---- 3. Shape, type, layout ----------------------------------------- */
+  --en-theme-radius-control:         0;          /* square corners */
+  --en-theme-radius-pill:            9999px;     /* round icon buttons only */
+  --en-theme-border-width:           2px;
+  --en-theme-shadow:                 none;       /* flat blocks, no shadows */
+
+  --en-theme-font-display:           "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  --en-theme-font-body:              "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --en-theme-display-tracking:       -0.035em;
+  --en-theme-display-weight:         700;
+  --en-theme-body-size:              17px;
+
+  --en-theme-container-max:          1296px;
+  --en-theme-gutter:                 clamp(20px, 4vw, 48px);
+  --en-theme-section-y:              clamp(64px, 9vw, 112px);
+
+  /* ---- 4. Component hooks (EDS-style names; only work if the component
+         publishes them. Check each one in the repo tomorrow.) ------------ */
+  --en-button-height:                52px;
+  --en-button-padding-x:             28px;
+  --en-button-radius:                var(--en-theme-radius-control);
+  --en-button-font-weight:           700;
+  --en-input-height:                 52px;
+  --en-input-border-width:           var(--en-theme-border-width);
+
+  /* ---- 5. Aliases so the existing CraftKit pages keep working ---------- */
+  --coral:                           var(--en-theme-action-primary-bg);
+}
+
+/* Reduced motion for the ticker and smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  .en-theme-craftkit { scroll-behavior: auto; }
+}

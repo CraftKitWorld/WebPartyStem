@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CraftKit Social Ad Layouts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#EDE7D6;font-family:'DM Sans',Arial,sans-serif;color:#141212;padding:32px}
+h1{font-family:'Bricolage Grotesque',Arial,sans-serif}
+.intro{max-width:760px;margin:0 0 32px}.intro p{line-height:1.5}
+.art-wrap{margin:0 0 56px}.art-wrap h2{font-size:18px;margin:0 0 12px}.art-wrap small{font-weight:500;color:#4A4442}
+.art{position:relative;overflow:hidden;background:#fff;transform-origin:top left}
+.ph{background:repeating-linear-gradient(135deg,var(--c) 0 36px,color-mix(in srgb,var(--c),#fff 8%) 36px 72px)}
+.ph span{position:absolute;left:40px;bottom:40px;color:rgba(255,255,255,.8);font-size:26px;font-weight:500}
+h3,.logo{font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:800;margin:0;color:#fff}
+.eyebrow{margin:0 0 16px;font-size:28px;font-weight:700;letter-spacing:.14em;color:#fff}.eyebrow.dark{color:#141212}
+.xl{font-size:92px;line-height:.95;letter-spacing:-.02em}.xl.dark{color:#141212}
+.lead{font-size:42px;line-height:1.2;margin:24px 0 0;color:#fff;font-weight:500}.lead.dark{color:#141212}
+.pill{display:inline-block;background:#D63A28;color:#fff;font-weight:700;font-size:38px;padding:24px 44px;border:0}.pill.big{font-size:46px;padding:30px 56px}
+.small{color:#fff;font-size:32px;font-weight:500}
+.sticker{position:absolute;width:210px;height:210px;background:#D63A28;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:800;font-size:64px;line-height:.95;border:6px solid #fff;transform:rotate(8deg)}
+.band{position:absolute;left:0;right:0;bottom:0;background:#141212;padding:56px;}
+.band h3{font-size:104px;line-height:.95;letter-spacing:-.02em;margin-bottom:36px}.row{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.scrim-top{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,18,.88) 0,rgba(20,18,18,.55) 38%,rgba(20,18,18,0) 62%)}
+.scrim-bot{position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,18,18,.9) 0,rgba(20,18,18,.6) 38%,rgba(20,18,18,0) 65%)}
+.topcopy{position:absolute;top:64px;left:56px;right:56px}
+.botbar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:36px 56px;background:#141212}
+.logo{font-size:56px}.logo.dark{color:#141212}
+.split-l{position:absolute;left:0;top:0;bottom:0;width:54%;background:#FFF0C9;padding:64px 56px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:0}
+.split-l .xl{font-size:76px;margin-bottom:8px}.split-l .pill{margin-top:36px}.split-l .logo{position:absolute;left:56px;bottom:48px}
+.logo-top{position:absolute;top:250px;left:64px}
+.story-copy{position:absolute;left:64px;right:64px;bottom:480px}
+.story-cta{position:absolute;left:64px;right:64px;bottom:340px}
+.safe-guide{position:absolute;left:0;right:0;top:250px;bottom:340px;outline:2px dashed rgba(255,255,255,.45);pointer-events:none}
+body.clean .safe-guide{display:none}
+</style></head><body>
+<div class="intro"><h1>CraftKit social ad layouts</h1><p>Six overlay layouts in parent-friendly language: two 4:5 feed ads, a square voucher ad and a three-frame story carousel. Photo slots are placeholders; text sits on a dark scrim or band so it stays readable over any photo. On story frames the dashed outline shows the safe zone (top 250px and bottom 340px are covered by Meta's interface).</p></div>
+<section class="art-wrap"><h2>Feed 4:5 · Layout 1 · bottom band (Ad A) <small>1080×1350</small></h2><div class="art" id="feed-a" style="width:1080px;height:1350px"><div class="ph" style="--c:#5A2A22;position:absolute;inset:0;"><span>[PHOTO: kids mid-game in costume badges]</span></div>
+<div class="sticker" style="top:56px;right:56px;">$50<br>OFF</div>
+<div class="band"><p class="eyebrow">ADVENTURE BIRTHDAY PARTIES · HOOD RIVER</p><h3>Kids play.<br>You enjoy the party.</h3><div class="row"><span class="pill">See party worlds &rarr;</span><span class="small">We bring the games, props and host.</span></div></div></div></section><section class="art-wrap"><h2>Feed 4:5 · Layout 2 · headline over photo (Ad B) <small>1080×1350</small></h2><div class="art" id="feed-b" style="width:1080px;height:1350px"><div class="ph" style="--c:#2D2A5A;position:absolute;inset:0;"><span>[PHOTO: kids racing through the course]</span></div>
+<div class="scrim-top"></div>
+<div class="topcopy"><h3 class="xl">Pick their world.<br>We bring the adventure.</h3><p class="lead">Crafting quests for ages 3–7. Squad missions for ages 8–16.</p></div>
+<div class="botbar"><span class="logo">CraftKit</span><span class="pill">See how it works &rarr;</span></div></div></section><section class="art-wrap"><h2>Square 1:1 · Layout 3 · split voucher <small>1080×1080</small></h2><div class="art" id="square" style="width:1080px;height:1080px"><div class="split-l"><p class="eyebrow dark">VIP VOUCHER</p><h3 class="xl dark">Give them a birthday they'll still talk about</h3><p class="lead dark">$50 off with code <b>CRAFT50VIP</b></p><span class="pill">Book now &rarr;</span><span class="logo dark">CraftKit</span></div><div class="ph" style="--c:#1F4A3A;position:absolute;top:0;right:0;width:46%;height:100%;"><span>[PHOTO: kids at the piñata finale]</span></div></div></section><section class="art-wrap"><h2>Story / Reel 9:16 · Frame 1 (Ad C) <small>1080×1920</small></h2><div class="art" id="story-1" style="width:1080px;height:1920px"><div class="ph" style="--c:#5A2A22;position:absolute;inset:0;"><span>[PHOTO: kids sneaking past the sleeping raptors]</span></div><div class="scrim-bot"></div><div class="logo-top logo">CraftKit</div><div class="story-copy"><p class="eyebrow">1 / 3</p><h3 class="xl">Escape the raptor pack.</h3></div><div class="safe-guide"></div></div></section><section class="art-wrap"><h2>Story / Reel 9:16 · Frame 2 (Ad C) <small>1080×1920</small></h2><div class="art" id="story-2" style="width:1080px;height:1920px"><div class="ph" style="--c:#7A5226;position:absolute;inset:0;"><span>[PHOTO: kids in hard hats at the caution-tape gate]</span></div><div class="scrim-bot"></div><div class="logo-top logo">CraftKit</div><div class="story-copy"><p class="eyebrow">2 / 3</p><h3 class="xl">Build the site. Then bring it down.</h3></div><div class="safe-guide"></div></div></section><section class="art-wrap"><h2>Story / Reel 9:16 · Frame 3 (Ad C) <small>1080×1920</small></h2><div class="art" id="story-3" style="width:1080px;height:1920px"><div class="ph" style="--c:#1F4A3A;position:absolute;inset:0;"><span>[PHOTO: kids cheering, piñata moment]</span></div><div class="scrim-bot"></div><div class="logo-top logo">CraftKit</div><div class="story-copy"><p class="eyebrow">3 / 3</p><h3 class="xl">Pick their world. We bring the adventure.</h3></div><div class="story-cta"><span class="pill big">Claim your $50 voucher &rarr;</span></div><div class="safe-guide"></div></div></section>
+</body></html>
