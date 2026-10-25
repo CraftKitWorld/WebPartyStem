@@ -11,7 +11,7 @@ A static site (plain HTML + one CSS file + a few shared JS files, no framework, 
 | `index.html` | Meta (Facebook/Instagram) lead-form and ad traffic | Persuade, then book. Full story: hero, how it works, worlds, wall of fun, FAQ, booking. |
 | `book.html` | SMS / email click-throughs (people who already know us) | Minimal. Worlds, booking card, sticky "Back to booking" bar on mobile. Almost no persuasion copy. |
 
-Supporting pages: `about.html`, `privacy.html`, `after-school.html`, `stem-camps.html`. Emails and social ads live in `email/` and `social/` and are generated from markdown (section 4).
+Supporting pages: `about.html`, `privacy.html`, `after-school.html`. The STEM camps page is archived in `_archive-stem-camps/` (camps are retired; their concepts run through after-school). Emails and social ads live in `email/` and `social/` and are generated from markdown (section 4).
 
 ## 2. File map and build
 

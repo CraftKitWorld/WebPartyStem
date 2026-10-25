@@ -531,25 +531,25 @@ window.CK_PRODUCTS = {
         "id": "mars",
         "name": "Mars",
         "tone": "mars",
-        "desc": "[ONE-LINE DESCRIPTION]"
-      },
-      {
-        "id": "deep-blue",
-        "name": "Deep Blue",
-        "tone": "ocean",
-        "desc": "[ONE-LINE DESCRIPTION]"
-      },
-      {
-        "id": "japan",
-        "name": "Japan",
-        "tone": "sakura",
-        "desc": "[ONE-LINE DESCRIPTION]"
+        "desc": "Build a rover that drills and rolls, and a base wall that tells the story of Olympus Mons, dust storms and lava-tube shelters."
       },
       {
         "id": "the-gorge",
         "name": "The Gorge",
         "tone": "forest",
-        "desc": "[ONE-LINE DESCRIPTION]"
+        "desc": "Trace basalt cliffs and waterfalls, then build a salmon ladder and a flood gate. Learn how ice-age floods shaped the Columbia River."
+      },
+      {
+        "id": "deep-sea",
+        "name": "Deep Sea",
+        "tone": "ocean",
+        "desc": "Build a periscope scanner and explore a deep-ocean trench. Learn how bioluminescent creatures make their own light."
+      },
+      {
+        "id": "japan",
+        "name": "Japan",
+        "tone": "sakura",
+        "desc": "Build an alpine cable car with a working pulley, then a pagoda to watch over the mountain station. Learn how mountain engineers move people up steep slopes."
       }
     ]
   }

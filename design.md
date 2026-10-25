@@ -221,7 +221,7 @@ Placeholders to replace before launch: `[PRICE]`, `[DEPOSIT]`, `[SQUARE LOCATION
 
 ## 10. Tracking (Google Analytics 4 + Klaviyo)
 
-Placeholders only. Replace `G-XXXXXXXXXX` (GA4 Measurement ID) and `YOUR_KLAVIYO_PUBLIC_API_KEY` (Klaviyo Public API Key / Company ID) in the `<head>` of `index.html` and `stem-camps.html`.
+Placeholders only. Replace `G-XXXXXXXXXX` (GA4 Measurement ID) and `YOUR_KLAVIYO_PUBLIC_API_KEY` (Klaviyo Public API Key / Company ID) in the `<head>` of `index.html` and `after-school.html`.
 
 - Helpers `ckTrack(name, params)` and `ckIdentify(props)` send to GA4 (`gtag`) and Klaviyo (`_learnq`) and do nothing if either is missing. Run `window.CK_DEBUG = true` in the browser console to see every event.
 - Any element with `data-track="id"` reports `cta_click` with `cta_id` automatically.

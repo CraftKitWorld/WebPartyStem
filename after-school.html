@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>After-school programs (DRAFT) | CraftKit</title>
-<meta name="description" content="Draft page: after-school programs waitlist.">
-<meta name="robots" content="noindex">
+<title>After-school programs | CraftKit</title>
+<meta name="description" content="Cardboard engineering and storytelling after school. Kids build the machines that make their story move, and learn real science and history along the way.">
+<meta name="robots" content="index, follow">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,8 +73,7 @@
 <link rel="stylesheet" href="craftkit.css">
 </head>
 <body>
-<!-- DRAFT: repurposed from the STEM camps page. Not linked from the main site yet and set to noindex.
-     All [BRACKETED] text is a placeholder to confirm. Content comes from "afterschool" in craftkit-products.js. -->
+<!-- All [BRACKETED] text still needs confirming. Theme cards and ticker come from "afterschool" in craftkit-products.js. -->
 <a class="skip" href="#main">Skip to main content</a>
 <script src="craftkit-chrome.js" data-part="header" data-variant="overlay" data-page="after"></script>
 <main id="main">
@@ -83,12 +82,12 @@
     <div class="ph absolute inset-0 -z-20" role="img" aria-label="Photo placeholder: kids playing together after school" style="--ph:var(--en-theme-photo-slate)"><span>[HERO PHOTO: a small group of kids in the middle of a game]</span></div>
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-overlay"></div>
     <div class="wrap w-full pt-40 pb-14 flex flex-col gap-5">
-      <p class="text-base">[LOCATION, e.g. Hood River, OR] · After-school [SEASON / YEAR]</p>
+      <p class="text-base">Portland, OR · After-school [SEASON / YEAR]</p>
       <div class="flex flex-wrap items-end justify-between gap-8">
-        <h1 id="hero-h" class="text-[clamp(52px,9.5vw,120px)] leading-[.88] max-w-[10em]">After-school adventures for kids who love to play</h1>
+        <h1 id="hero-h" class="text-[clamp(52px,9.5vw,120px)] leading-[.88] max-w-[10em]">Build a world. Then step inside it.</h1>
         <a class="btn btn-white" href="#waitlist" data-track="hero_join_waitlist">Join the waitlist <span aria-hidden="true">→</span></a>
       </div>
-      <p class="text-[19px] font-medium max-w-[760px]">Small groups · Ages [00 to 00] · [DAYS, e.g. Tuesdays and Thursdays, 3:30 to 5:30pm] · Join free, no payment needed.</p>
+      <p class="text-[19px] font-medium max-w-[760px]">Cardboard engineering and storytelling for ages 5 to 11. Small groups · [DAYS AND TIMES, set with each school] · Join free, no payment needed.</p>
     </div>
   </section>
 
@@ -103,8 +102,9 @@
 
   <section aria-labelledby="themes-h" class="pt-[clamp(56px,8vw,104px)]">
     <div class="wrap">
-      <h2 id="themes-h" class="text-[clamp(34px,4vw,52px)] leading-none mb-3">The themes we're planning</h2>
-      <p class="max-w-[56ch] mb-10">[COPY: one or two lines on how an after-school session works: what kids do, how long, how many kids. Real copy coming.]</p>
+      <h2 id="themes-h" class="text-[clamp(34px,4vw,52px)] leading-none mb-3">Six weeks. One story. Real things learned.</h2>
+      <p class="max-w-[56ch] mb-4">Each theme is a six-week story. Every session is one hour: ten minutes of lore and a fact or two, forty minutes of building, then ten minutes to test what they made and pack up.</p>
+      <p class="max-w-[56ch] mb-10">Week one kids build the world on a wall-sized backdrop. Later weeks add colour, wearable gear and working mechanisms, and the story grows with them.</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8" data-ck="after-cards"></div>
     </div>
   </section>
@@ -114,7 +114,7 @@
       <div class="flex-[1_1_300px] grid gap-6 max-w-[460px]">
         <h2 id="wait-h" class="text-[clamp(34px,4vw,52px)] leading-none">Join the after-school waitlist</h2>
         <div class="bg-tint px-[26px] py-6"><p class="display text-[22px] leading-[1.2] font-bold tracking-[-0.02em]">Small groups, so spots are limited. Waitlist families hear first.</p></div>
-        <p class="text-[19px]">[COPY: why after-school with CraftKit. What kids do, who leads it, what a parent can expect at pick-up.]</p>
+        <p class="text-[19px]">A background-checked CraftKit facilitator leads every session and brings all the materials. Kids leave with something they built and a story they can tell at home. For schools and PTAs, we run it on your campus with no staff time and no cost to the school.</p>
         <div>
           <h3 class="text-2xl leading-[1.1] mb-4">What happens next</h3>
           <ol class="how">
@@ -163,6 +163,10 @@
 
           <div class="field"><label for="w-notes">Anything else we should know? <span class="req">(optional)</span></label><textarea class="input" id="w-notes" name="notes"></textarea></div>
 
+          <label class="choice items-start">
+            <input type="checkbox" name="organiser" value="school"> <span>I run an after-school programme for a school, PTA or organisation.</span>
+          </label>
+
           <label class="choice items-start" data-klaviyo-list="[KLAVIYO LIST ID]"><input type="checkbox" name="newsletter" class="mt-[11px]" checked> <span>Email me news about after-school programs. I can unsubscribe at any time.</span></label>
 
           <div class="grid gap-[10px] justify-items-start">
@@ -208,7 +212,8 @@
     e.preventDefault();
     ckIdentify({ $email: val('email'), $first_name: val('first'), $last_name: val('last'), $phone_number: val('phone') || undefined,
       ck_child_ages: val('ages'), ck_school: val('school'), ck_days: vals('days').join(', '),
-      ck_theme_interest: vals('world').join(', '), ck_theme_other: val('world_other'), ck_afterschool_interest: true });
+      ck_theme_interest: vals('world').join(', '), ck_theme_other: val('world_other'), ck_afterschool_interest: true,
+      ck_is_school_organiser: vals('organiser').length > 0 });
     ckTrack('generate_lead', { lead_type: 'afterschool_waitlist', days: vals('days').join(', '), themes: vals('world').join(', ') });
     form.classList.add('hidden');
     var d = $('#done'); d.classList.remove('hidden'); d.classList.add('grid');
