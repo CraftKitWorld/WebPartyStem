@@ -71,6 +71,32 @@
 <!-- Theme variables, then the shared compiled Tailwind stylesheet (one for all pages) -->
 <link rel="stylesheet" href="eds-theme/craftkit-theme.css">
 <link rel="stylesheet" href="craftkit.css">
+<style id="after-school-layout">
+  /* Layout for the parent and hirer sections. Kept here so the compiled stylesheet is not needed. */
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--en-palette-coral, #D63A28); }
+  .btn-hero-link { color: #FFFFFF; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+  .as-steps { list-style: none; margin: 0; padding: 0; }
+  .as-step { display: grid; grid-template-columns: 1fr; gap: 4px 24px; padding: 20px; border-bottom: 2px solid #141212; }
+  .as-step:last-child { border-bottom: 0; }
+  .as-step .as-time { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-weight: 800; font-size: 24px; }
+  .as-two { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
+  .as-cols-2 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .as-box { border: 2px solid #141212; padding: 24px; }
+  .as-box ul { list-style: disc; padding-left: 24px; margin: 0; display: grid; gap: 8px; }
+  .as-stack { display: grid; gap: 24px; }
+  .as-tint { background: #FFF0C9; padding: 26px; display: grid; gap: 16px; }
+  .as-small { font-size: 15px; color: #4A4442; }
+  .as-lead { font-size: 19px; line-height: 1.5; }
+  .as-h3 { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.1; margin: 0 0 12px; }
+  .as-h2 { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(34px, 4vw, 52px); line-height: 1; letter-spacing: -0.035em; margin: 0 0 16px; }
+  .as-section { padding-top: clamp(56px, 8vw, 104px); }
+  @media (min-width: 640px) {
+    .as-step { grid-template-columns: 140px 1fr; }
+    .as-cols-2 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 768px) { .as-cols-2.md { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .as-two { grid-template-columns: 1fr 1fr; } }
+</style>
 </head>
 <body>
 <!-- All [BRACKETED] text still needs confirming. Theme cards and ticker come from "afterschool" in craftkit-products.js. -->
@@ -79,15 +105,18 @@
 <main id="main">
 
   <section aria-labelledby="hero-h" class="relative isolate min-h-[720px] flex flex-col justify-end text-white bg-hero">
-    <div class="ph absolute inset-0 -z-20" role="img" aria-label="Photo placeholder: kids playing together after school" style="--ph:var(--en-theme-photo-slate)"><span>[HERO PHOTO: a small group of kids in the middle of a game]</span></div>
+    <div class="ph absolute inset-0 -z-20" role="img" aria-label="Photo placeholder: kids building together at a table" style="--ph:var(--en-theme-photo-slate)"><span>[HERO PHOTO: kids building together at a table]</span></div>
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-overlay"></div>
     <div class="wrap w-full pt-40 pb-14 flex flex-col gap-5">
-      <p class="text-base">Portland, OR · After-school [SEASON / YEAR]</p>
+      <p class="text-base">Portland, OR · After-school programme · Ages 5 to 11</p>
       <div class="flex flex-wrap items-end justify-between gap-8">
         <h1 id="hero-h" class="text-[clamp(52px,9.5vw,120px)] leading-[.88] max-w-[10em]">Build a world. Then step inside it.</h1>
-        <a class="btn btn-white" href="#waitlist" data-track="hero_join_waitlist">Join the waitlist <span aria-hidden="true">→</span></a>
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-white" href="#waitlist" data-track="hero_join_waitlist">Join the waitlist <span aria-hidden="true">→</span></a>
+          <a class="btn-hero-link" href="#for-schools" data-track="hero_for_schools">For schools and hirers <span aria-hidden="true">→</span></a>
+        </div>
       </div>
-      <p class="text-[19px] font-medium max-w-[760px]">Cardboard engineering and storytelling for ages 5 to 11. Small groups · [DAYS AND TIMES, set with each school] · Join free, no payment needed.</p>
+      <p class="text-[19px] font-medium max-w-[760px]">One hour a week, six weeks, one story. Kids build a backdrop, wearable gear and working mechanisms, then perform the story for parents. Join free, no payment needed.</p>
     </div>
   </section>
 
@@ -100,12 +129,107 @@
     </button>
   </div>
 
-  <section aria-labelledby="themes-h" class="pt-[clamp(56px,8vw,104px)]">
+  <section aria-labelledby="day-h" class="as-section">
     <div class="wrap">
-      <h2 id="themes-h" class="text-[clamp(34px,4vw,52px)] leading-none mb-3">Six weeks. One story. Real things learned.</h2>
-      <p class="max-w-[56ch] mb-4">Each theme is a six-week story. Every session is one hour: ten minutes of lore and a fact or two, forty minutes of building, then ten minutes to test what they made and pack up.</p>
-      <p class="max-w-[56ch] mb-10">Week one kids build the world on a wall-sized backdrop. Later weeks add colour, wearable gear and working mechanisms, and the story grows with them.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8" data-ck="after-cards"></div>
+      <p class="eyebrow">A day in the life</p>
+      <h2 id="day-h" class="as-h2">What a session looks like, start to finish</h2>
+      <p style="max-width:60ch;margin-bottom:40px">Every session is one hour. The same three parts, every week, so kids always know what comes next.</p>
+      <ol class="as-steps as-box" style="padding:0">
+        <li class="as-step"><span class="as-time">3:15</span><span><strong>Pick-up from class.</strong> Kids walk to the room together. Parents don't have to leave work early. [CONFIRM: school's dismissal routine]</span></li>
+        <li class="as-step"><span class="as-time">3:20</span><span><strong>Story and one fact.</strong> The facilitator reads the week's fact out loud. Kids pick their storyline, from three options or their own.</span></li>
+        <li class="as-step"><span class="as-time">3:30</span><span><strong>Build.</strong> Kids paint, decorate and stick together that week's pieces. Juniors get pre-cut parts. Seniors trace and cut some of their own.</span></li>
+        <li class="as-step"><span class="as-time">3:55</span><span><strong>Test and show.</strong> Kids use the piece in their story and show a partner what it does.</span></li>
+        <li class="as-step"><span class="as-time">4:05</span><span><strong>Pack-up and pick-up.</strong> Work goes into the kit. Kids leave with what they made that day.</span></li>
+      </ol>
+      <p class="as-small" style="margin-top:24px;font-size:17px">Example, from a Week 4 Mars session: a child builds a rover arm with a claw, then uses it to pick up a sample box in the story. Their partner says what the arm reaches.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="learn-h" class="as-section">
+    <div class="wrap as-two">
+      <div>
+        <p class="eyebrow">What kids learn</p>
+        <h2 id="learn-h" class="as-h2">Real facts, built into the story</h2>
+        <p class="as-lead" style="margin-bottom:16px">Every theme teaches real science and history, checked against sources. Facts are paced for age: Juniors (5–7) learn two or three a week. Seniors (8–11) learn about eight, and use three in their story.</p>
+        <p class="as-lead">Example, Mars week 1: Olympus Mons is about two and a half times the height of Mount Everest, and it's the largest volcano in the solar system.</p>
+      </div>
+      <div class="as-tint">
+        <p class="display text-[22px] leading-[1.2] font-bold tracking-[-0.02em]">Junior (5–7)</p>
+        <p>Pre-cut pieces to paint, decorate and stick together. The facilitator helps with the joins. One paper-cup build each session in some weeks.</p>
+        <p class="display text-[22px] leading-[1.2] font-bold tracking-[-0.02em]">Senior (8–11)</p>
+        <p>Trace and cut some parts, build moving linkages on split pins, and write a short storyline with a beginning, a problem and an ending.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="themes-h" class="as-section">
+    <div class="wrap">
+      <p class="eyebrow">Pick a world</p>
+      <h2 id="themes-h" class="as-h2">Six weeks. One story. Four worlds.</h2>
+      <p style="max-width:60ch;margin-bottom:40px">Each block runs one world for all six weeks. Week 1 builds the backdrop. Weeks 2 to 5 add colour, gear and machines. Week 6 is the show for parents.</p>
+      <div class="as-cols-2" data-ck="after-cards"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="week-h" class="as-section">
+    <div class="wrap">
+      <p class="eyebrow">A sample week</p>
+      <h2 id="week-h" class="as-h2">Two blocks, two days, two worlds</h2>
+      <p style="max-width:60ch;margin-bottom:40px">A school can host more than one block. Each block runs on its own day with its own world, so the same kids can't get bored, and a school doesn't need more than one room free at a time.</p>
+      <div class="as-cols-2 md">
+        <article class="as-box as-stack" style="gap:12px">
+          <p class="display text-[28px] leading-none font-bold">Tuesday · Mars</p>
+          <p>Olympus Mons base, rovers and spacesuits. Ends with a dust-storm show for parents.</p>
+          <p class="text-muted text-[15px]">3:15 to 4:15 · [CONFIRM: block dates and enrolment]</p>
+        </article>
+        <article class="as-box as-stack" style="gap:12px">
+          <p class="display text-[28px] leading-none font-bold">Thursday · Japan</p>
+          <p>Alpine cable car, pylons and a pagoda. Ends with a rescue run for parents.</p>
+          <p class="text-muted text-[15px]">3:15 to 4:15 · [CONFIRM: block dates and enrolment]</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="for-schools" aria-labelledby="schools-h" class="as-section">
+    <div class="wrap as-two">
+      <div>
+        <p class="eyebrow">For schools, PTAs and after-school hirers</p>
+        <h2 id="schools-h" class="as-h2">Turnkey on your campus</h2>
+        <p class="as-lead" style="margin-bottom:16px">We run the whole programme. You provide a room and a point of contact. Every session is a single hour after school, so kids go home the same day. There are no multi-day camps and no overnight commitments.</p>
+        <p class="as-lead">Each week's session is planned, with a numbered lesson card and a cut list, so any trained facilitator can run it.</p>
+      </div>
+      <div class="as-stack">
+        <div class="as-box">
+          <h3 class="as-h3">We bring</h3>
+          <ul>
+            <li>A facilitator [CONFIRM: background-checked, and the check is renewed each year]</li>
+            <li>All materials, pre-cut and numbered</li>
+            <li>The six-week plan and a lesson card for every session</li>
+            <li>Set-up and pack-down</li>
+          </ul>
+        </div>
+        <div class="as-box">
+          <h3 class="as-h3">The school provides</h3>
+          <ul>
+            <li>One room for one hour a week, with wall space for a paper backdrop</li>
+            <li>A point of contact for dismissal and pick-up</li>
+            <li>[CONFIRM: any room fee, or no fee]</li>
+          </ul>
+        </div>
+        <div class="as-box">
+          <h3 class="as-h3">Two ways to run it</h3>
+          <ul>
+            <li><strong>Parent-paid block:</strong> families register and pay us directly. No cost to the school. [CONFIRM: price per child]</li>
+            <li><strong>School or PTA residency:</strong> a flat fee for a block. [CONFIRM: fee]</li>
+          </ul>
+        </div>
+        <div class="as-box">
+          <h3 class="as-h3">Safety and cover</h3>
+          <p>[CONFIRM: general liability cover amount and a certificate on request]</p>
+        </div>
+        <a class="btn btn-coral" style="justify-self:start" href="#waitlist" data-track="schools_contact">Tell us about your school <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -114,7 +238,7 @@
       <div class="flex-[1_1_300px] grid gap-6 max-w-[460px]">
         <h2 id="wait-h" class="text-[clamp(34px,4vw,52px)] leading-none">Join the after-school waitlist</h2>
         <div class="bg-tint px-[26px] py-6"><p class="display text-[22px] leading-[1.2] font-bold tracking-[-0.02em]">Small groups, so spots are limited. Waitlist families hear first.</p></div>
-        <p class="text-[19px]">A background-checked CraftKit facilitator leads every session and brings all the materials. Kids leave with something they built and a story they can tell at home. For schools and PTAs, we run it on your campus with no staff time and no cost to the school.</p>
+        <p class="as-lead">A background-checked CraftKit facilitator leads every session and brings all the materials. Kids leave with something they built and a story they can tell at home. For schools and PTAs, we run it on your campus with no staff time and no cost to the school.</p>
         <div>
           <h3 class="text-2xl leading-[1.1] mb-4">What happens next</h3>
           <ol class="how">
