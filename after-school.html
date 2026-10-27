@@ -96,6 +96,16 @@
   }
   @media (min-width: 768px) { .as-cols-2.md { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1024px) { .as-two { grid-template-columns: 1fr 1fr; } }
+  /* Phone: no full-screen hero, so the real content starts near the top */
+  @media (max-width: 767px) {
+    section[aria-labelledby="hero-h"] { min-height: 0 !important; }
+    section[aria-labelledby="hero-h"] .wrap { padding-top: 96px !important; padding-bottom: 32px !important; gap: 14px !important; }
+    section[aria-labelledby="hero-h"] h1 { font-size: 44px !important; }
+    .as-section { padding-top: 48px; }
+    .as-step { padding: 14px 16px; }
+    .as-box, .as-tint { padding: 18px; }
+    .as-steps { margin-bottom: 0; }
+  }
 </style>
 </head>
 <body>
@@ -263,7 +273,23 @@
             </div>
             <div class="f-row">
               <div class="field"><label for="w-ages">Your child's age(s) <span class="req">(required)</span></label><input class="input" id="w-ages" name="ages" type="text" required></div>
-              <div class="field"><label for="w-school">Their school or neighbourhood <span class="req">(optional)</span></label><input class="input" id="w-school" name="school" type="text"></div>
+              <div class="field"><label for="w-postcode">Postcode (ZIP) <span class="req">(required)</span></label><input class="input" id="w-postcode" name="postcode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 97006" required aria-describedby="w-postcode-hint"><p id="w-postcode-hint" class="as-small" style="margin:6px 0 0;font-size:14px">We use this to check we run in your area.</p></div>
+            </div>
+            <div class="field">
+              <label for="w-school">Your child's school <span class="req">(optional)</span></label>
+              <input class="input" id="w-school" name="school" type="text" list="w-school-list" autocomplete="off" placeholder="Start typing, or pick from the list">
+              <datalist id="w-school-list">
+                <option value="Bonny Slope Elementary"></option>
+                <option value="Findley Elementary"></option>
+                <option value="Oak Creek Elementary"></option>
+                <option value="River Grove Elementary"></option>
+                <option value="Our Lady of the Lake Catholic School"></option>
+                <option value="Oregon Episcopal School"></option>
+                <option value="Catlin Gabel School"></option>
+                <option value="French International School of Oregon"></option>
+                <option value="Not listed (I'll type it in)"></option>
+              </datalist>
+              <p class="as-small" style="margin:6px 0 0;font-size:14px">Not sure? Leave it blank. We'll ask later.</p>
             </div>
           </fieldset>
 
@@ -335,7 +361,7 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     ckIdentify({ $email: val('email'), $first_name: val('first'), $last_name: val('last'), $phone_number: val('phone') || undefined,
-      ck_child_ages: val('ages'), ck_school: val('school'), ck_days: vals('days').join(', '),
+      ck_child_ages: val('ages'), ck_school: val('school'), ck_postcode: val('postcode'), ck_days: vals('days').join(', '),
       ck_theme_interest: vals('world').join(', '), ck_theme_other: val('world_other'), ck_afterschool_interest: true,
       ck_is_school_organiser: vals('organiser').length > 0 });
     ckTrack('generate_lead', { lead_type: 'afterschool_waitlist', days: vals('days').join(', '), themes: vals('world').join(', ') });
