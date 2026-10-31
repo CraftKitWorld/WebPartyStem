@@ -186,6 +186,11 @@
   $('#code-apply').addEventListener('click', function () { applyCode($('#c-code').value); });
   $('#c-code').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applyCode(this.value); } });
 
+  /* Save the parent's email to Klaviyo as soon as it is entered, so an abandoned booking can still be followed up. */
+  form.elements.email.addEventListener('change', function () {
+    if (this.checkValidity() && this.value && window.ckIdentify) ckIdentify({ $email: val('email'), $first_name: val('first'), ck_source: 'booking_email_entry' });
+  });
+
   /* ---------- link parameters (Meta ads, Klaviyo email and SMS) ----------
      ?world=<id | name | short name>  preselects that world (any other value is treated as your own theme)
      ?custom=<theme text>             fills "Describe your world"
@@ -274,14 +279,15 @@
     if (!form.checkValidity()) { form.reportValidity(); return; }
     if (!state.date) { $('#date-err').classList.remove('hidden'); var f = cal.querySelector('.cal-day:not([disabled])'); if (f) f.focus(); return; }
     var link = linkFor();
-    if (window.ckIdentify) ckIdentify({ $email: val('email'), $first_name: val('first'), $last_name: val('last'), $phone_number: val('phone'), ck_party_for: val('child'), ck_party_age: val('age'), ck_party_tier: window.CK.tier(), ck_party_world: state.world, ck_custom_world: isCustom() ? val('customWorld') : '', ck_party_date: state.date, ck_voucher: state.voucher ? C.voucherCode : '' });
+    if (window.ckIdentify) ckIdentify({ $email: val('email'), $first_name: val('first'), $last_name: val('last'), $phone_number: val('phone'), ck_party_for: val('child'), ck_party_age: val('age'), ck_child_age: val('age'), ck_party_tier: window.CK.tier(), ck_party_world: state.world, ck_custom_world: isCustom() ? val('customWorld') : '', ck_party_date: state.date, ck_voucher: state.voucher ? C.voucherCode : '' });
     if (window.ckTrack) ckTrack('begin_payment', { world: state.world, date: state.date, value: total(), currency: 'USD', coupon: state.voucher ? C.voucherCode : '' });
     // Live: send the parent to the Square Payment Link. Put world + date + name on the Square order
     // (Checkout API note) or save them first (Klaviyo profile above, or your own form handler).
     // On Square's "after payment" page, fire ckTrack('purchase', {...}) so GA4 and Klaviyo record the sale.
     if (sdkConfigured()) { payWithSdk(); return; }
     if (C.paymentMode !== 'sdk' && link && link.charAt(0) !== '[') { window.location.href = link; return; }
-    showDone();   // preview: nothing is configured yet
+    // Not configured yet: never show a booking confirmation without a real payment.
+    window.alert('Online booking is not open yet. Please check back soon.');
   });
 
   drawCal(); summary(); initSdk();

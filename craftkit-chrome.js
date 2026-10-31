@@ -8,6 +8,15 @@
    data-cta:     where the header "Book a party" button goes; leave out to hide the button.
    Your logo: replace assets/logo.svg with your real file (same name), or change LOGO.src below.
    ===================================================================== */
+/* Subscribe a parent to a Klaviyo list (public client API, no server needed). */
+window.ckSubscribe = function (listId, profile) {
+  fetch('https://a.klaviyo.com/client/subscriptions/?company_id=VXJc2z', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', revision: '2024-10-15' },
+    body: JSON.stringify({ data: { type: 'subscription', attributes: { profile: { data: { type: 'profile', attributes: profile } } },
+      relationships: { list: { data: { type: 'list', id: listId } } } } })
+  }).catch(function (err) { console.error('[CraftKit] Klaviyo list signup failed', err); });
+};
 (function () {
   var C = {
     LOGO: { src: 'assets/logo.svg', alt: 'CraftKit, home', height: 56 },
@@ -58,7 +67,7 @@
     </div>
     <div class="flex-[2_1_380px] max-w-[600px] grid gap-5" aria-live="polite">
       <h2 class="text-[32px] leading-none">Newsletter Sign Up</h2>
-      <form id="news-form" data-klaviyo-list="[KLAVIYO LIST ID]" class="flex flex-wrap gap-3">
+      <form id="news-form" data-klaviyo-list="QS6Pim" class="flex flex-wrap gap-3">
         <label class="sr" for="nl-email">Email address</label>
         <input class="input !w-auto flex-[1_1_240px] !border-white" id="nl-email" name="email" type="email" autocomplete="email" placeholder="Email Address" required>
         <button class="btn btn-white" type="submit">Sign Up</button>

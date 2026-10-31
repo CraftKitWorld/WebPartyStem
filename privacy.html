@@ -11,16 +11,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
 <!-- ===== TRACKING PLACEHOLDERS ===== -->
-<!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics 4: Measurement ID G-1GNDVHWLN3 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1GNDVHWLN3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-1GNDVHWLN3');
 </script>
-<!-- Klaviyo onsite JS: replace YOUR_KLAVIYO_PUBLIC_API_KEY (your 6-character Public API Key / Company ID) -->
-<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YOUR_KLAVIYO_PUBLIC_API_KEY"></script>
+<!-- Meta Pixel: CraftKit's pixel 1352773986467388 -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1352773986467388');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1352773986467388&ev=PageView&noscript=1"/></noscript>
+<!-- Klaviyo onsite JS: Public API Key / Company ID VXJc2z -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VXJc2z"></script>
 <script>
 /* Tracking helpers. Safe if GA4 or Klaviyo are not installed yet.
    Set window.CK_DEBUG = true in the browser console to log every event.
@@ -45,6 +56,8 @@
     try {
       var p = Object.assign({ page_title: document.title }, utm(), params || {});
       if (window.gtag) window.gtag('event', name, p);                          // GA4
+      var metaEvent = { generate_lead: 'Lead', sign_up: 'CompleteRegistration', begin_checkout: 'InitiateCheckout', purchase: 'Purchase' }[name];
+      if (window.fbq && metaEvent) fbq('track', metaEvent, { value: p.value, currency: p.currency || 'USD' });   // Meta Pixel
       (window._learnq = window._learnq || []).push(['track', name, p]);        // Klaviyo
       if (window.CK_DEBUG) console.log('[track]', name, p);
     } catch (e) {}
@@ -113,6 +126,7 @@
     e.preventDefault();
     var em = f.elements.email ? String(f.elements.email.value || '').trim() : '';
     if (window.ckIdentify) ckIdentify({ $email: em, ck_source: 'footer_newsletter' });
+    if (window.ckSubscribe) ckSubscribe('QS6Pim', { email: em });
     if (window.ckTrack) ckTrack('sign_up', { method: 'footer_newsletter' });
     f.classList.add('hidden');
     document.getElementById('news-done').classList.remove('hidden');
